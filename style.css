@@ -987,3 +987,37 @@ body.rgb-neon-active .radio-equalizer i {
   text-align: right;
   color: rgba(255, 255, 255, 0.85);
 }
+
+
+/* ===== Vídeo proporcional ===== */
+.local-video {
+  width: 100%;
+  max-height: 60vh;
+  display: block;
+  object-fit: contain;
+  background: #000;
+  border-radius: 10px;
+  margin: 12px 0;
+}
+
+.video-extra-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 10px 0 4px;
+}
+
+.video-extra-controls button {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.video-extra-controls button:active {
+  background: rgba(255, 255, 255, 0.18);
+}

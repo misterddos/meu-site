@@ -175,6 +175,57 @@ function stopMedia() {
   video.pause();
 }
 
+
+// ===== Controles extras de video =====
+const videoExtraControls = document.getElementById("videoExtraControls");
+const vidBack14 = document.getElementById("vidBack14");
+const vidForward14 = document.getElementById("vidForward14");
+const vidPip = document.getElementById("vidPip");
+const vidFullscreen = document.getElementById("vidFullscreen");
+
+function updateVideoControlsVisibility() {
+  const isVideo = currentIndex >= 0 && tracks[currentIndex] && tracks[currentIndex].kind === "video";
+  videoExtraControls.hidden = !isVideo;
+}
+
+vidBack14.addEventListener("click", () => {
+  video.currentTime = Math.max(0, video.currentTime - 14);
+});
+
+vidForward14.addEventListener("click", () => {
+  if (Number.isFinite(video.duration)) {
+    video.currentTime = Math.min(video.duration, video.currentTime + 14);
+  } else {
+    video.currentTime += 14;
+  }
+});
+
+vidPip.addEventListener("click", async () => {
+  try {
+    if (document.pictureInPictureElement) {
+      await document.exitPictureInPicture();
+    } else if (document.pictureInPictureEnabled) {
+      await video.requestPictureInPicture();
+    } else {
+      showToast("Picture-in-Picture nao suportado neste navegador.");
+    }
+  } catch (err) {
+    showToast("Nao foi possivel ativar o PIP.");
+  }
+});
+
+vidFullscreen.addEventListener("click", async () => {
+  try {
+    if (document.fullscreenElement) {
+      await document.exitFullscreen();
+    } else {
+      await video.requestFullscreen();
+    }
+  } catch (err) {
+    showToast("Nao foi possivel alternar tela cheia.");
+  }
+});
+
 function loadTrack(index, autoplay = false) {
   if (index < 0 || index >= tracks.length) return;
 
@@ -204,6 +255,7 @@ function loadTrack(index, autoplay = false) {
   playButton.textContent = "▶";
 
   renderPlaylist();
+  updateVideoControlsVisibility();
 
   if (autoplay) {
     media.play().catch(() => showToast("Toque em reproduzir para iniciar o arquivo."));
