@@ -316,7 +316,9 @@ footer strong { color: #aab4ff; }
 }
 
 
-/* RGB NEON MUSIC EFFECT */
+
+/* LIPPY SCRIPTS - RGB REATIVO À MÚSICA */
+
 body::before {
   content: "";
   position: fixed;
@@ -325,49 +327,28 @@ body::before {
   pointer-events: none;
   opacity: 0;
   background:
-    radial-gradient(ellipse at 0% 50%, hsla(var(--rgb-hue, 180), 100%, 55%, .20), transparent 48%),
-    radial-gradient(ellipse at 100% 50%, hsla(calc(var(--rgb-hue, 180) + 125), 100%, 55%, .18), transparent 48%),
-    radial-gradient(ellipse at 50% 0%, hsla(calc(var(--rgb-hue, 180) + 220), 100%, 55%, .13), transparent 45%);
-  transition: opacity .2s ease;
+    radial-gradient(
+      ellipse at 0% 50%,
+      hsla(var(--rgb-hue, 180), 100%, 55%, .35),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 100% 75%,
+      hsla(calc(var(--rgb-hue, 180) + 125), 100%, 55%, .30),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 50% 0%,
+      hsla(calc(var(--rgb-hue, 180) + 220), 100%, 55%, .20),
+      transparent 45%
+    );
+  transition: opacity .03s linear;
 }
 
 body.rgb-neon-active::before {
-  opacity: var(--rgb-power, .5);
+  opacity: var(--rgb-power, .3);
 }
 
-body.rgb-neon-active .radio-player {
-  border-color: hsl(var(--rgb-hue, 180), 100%, 65%);
-  box-shadow:
-    0 0 calc(12px + var(--rgb-power, .5) * 28px) hsla(var(--rgb-hue, 180), 100%, 55%, .65),
-    0 0 calc(25px + var(--rgb-power, .5) * 55px) hsla(calc(var(--rgb-hue, 180) + 125), 100%, 55%, .35),
-    inset 0 0 18px hsla(var(--rgb-hue, 180), 100%, 55%, .12);
-}
-
-body.rgb-neon-active .radio-player .cover {
-  box-shadow: 0 0 24px hsla(var(--rgb-hue, 180), 100%, 60%, .75);
-}
-
-body.rgb-neon-active .radio-equalizer i {
-  animation: rgb-equalizer .35s ease-in-out infinite alternate;
-  background: hsl(var(--rgb-hue, 180), 100%, 68%);
-  box-shadow: 0 0 9px currentColor;
-}
-
-.radio-equalizer i:nth-child(2n) { animation-delay: .12s; }
-.radio-equalizer i:nth-child(3n) { animation-delay: .22s; }
-.radio-equalizer i:nth-child(4n) { animation-delay: .08s; }
-
-@keyframes rgb-equalizer {
-  from { transform: scaleY(.35); opacity: .55; }
-  to { transform: scaleY(1.7); opacity: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body::before { transition: none; }
-  body.rgb-neon-active .radio-equalizer i { animation: none; }
-}
-
-/* LIPPY SCRIPTS - iluminação branca estilo balada */
 body::after {
   content: "";
   position: fixed;
@@ -376,31 +357,74 @@ body::after {
   pointer-events: none;
   opacity: 0;
   background:
-    radial-gradient(ellipse at 15% 20%, rgba(255,255,255,.30), transparent 42%),
-    radial-gradient(ellipse at 85% 75%, rgba(255,255,255,.24), transparent 45%),
-    radial-gradient(ellipse at 50% 50%, rgba(255,255,255,.12), transparent 65%);
+    radial-gradient(
+      ellipse at 15% 20%,
+      rgba(255,255,255,.75),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 85% 75%,
+      rgba(255,255,255,.60),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(255,255,255,.35),
+      transparent 65%
+    );
+  transition: opacity .025s linear;
 }
 
 body.rgb-neon-active::after {
-  animation: lippy-white-party 1.8s ease-in-out infinite;
+  opacity: calc(var(--rgb-flash, 0) * .65);
 }
 
 body.rgb-neon-active .radio-player {
   border-color: white;
   box-shadow:
-    0 0 16px rgba(255,255,255,.85),
-    0 0 35px rgba(255,255,255,.45),
+    0 0 calc(12px + var(--rgb-flash, 0) * 28px)
+      rgba(255,255,255,.85),
+    0 0 35px
+      hsla(var(--rgb-hue, 180), 100%, 55%, .55),
     inset 0 0 18px rgba(255,255,255,.18);
 }
 
-@keyframes lippy-white-party {
-  0%, 100% { opacity: .08; }
-  50% { opacity: .32; }
+body.rgb-neon-active .radio-player .cover {
+  box-shadow:
+    0 0 24px
+    hsla(var(--rgb-hue, 180), 100%, 60%, .75);
+}
+
+body.rgb-neon-active .radio-equalizer i {
+  animation: rgb-equalizer .14s ease-in-out infinite alternate;
+  background: hsl(var(--rgb-hue, 180), 100%, 75%);
+  box-shadow: 0 0 9px currentColor;
+}
+
+.radio-equalizer i:nth-child(2n) {
+  animation-delay: .08s;
+}
+
+.radio-equalizer i:nth-child(3n) {
+  animation-delay: .15s;
+}
+
+.radio-equalizer i:nth-child(4n) {
+  animation-delay: .04s;
+}
+
+@keyframes rgb-equalizer {
+  from { transform: scaleY(.35); opacity: .55; }
+  to { transform: scaleY(1.7); opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.rgb-neon-active::after {
+  body::before,
+  body::after {
+    transition: none;
+  }
+
+  body.rgb-neon-active .radio-equalizer i {
     animation: none;
-    opacity: .10;
   }
 }
