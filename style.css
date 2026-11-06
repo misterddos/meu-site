@@ -111,3 +111,14 @@ footer strong { color: #aab4ff; }
   .external-card { flex-wrap: wrap; }
   .small-link { margin-left: 56px; }
 }
+
+
+.live-card { overflow: hidden; }
+.live-frame-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #050810; }
+.live-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.live-caption { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 15px 18px; }
+.live-caption strong { font-size: 13px; }
+@media(max-width:600px) {
+  .live-caption { align-items: flex-start; flex-direction: column; }
+  .live-caption .small-link { margin-left: 0; }
+}
