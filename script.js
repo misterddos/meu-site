@@ -1,7 +1,3 @@
-window.addEventListener("error", (e) => {
-  alert("ERRO JS: " + e.message + " (linha " + e.lineno + ")");
-});
-
 const audio = document.getElementById("audio");
 const video = document.getElementById("video");
 const filesInput = document.getElementById("musicFiles");
