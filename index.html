@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d18">
+  <meta name="description" content="Lippy Workspace - área de trabalho pessoal.">
+  <title>Lippy Workspace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">L</span>
+      <span>LIPPY <b>WORKSPACE</b></span>
+    </a>
+    <span class="status"><i></i> SISTEMA ONLINE</span>
+  </header>
+
+  <main class="container">
+    <section class="welcome panel">
+      <div class="welcome-content">
+        <span class="eyebrow">SEU ESPAÇO DIGITAL</span>
+        <h1>Bem-vindo ao<br><span>Lippy Workspace.</span></h1>
+        <p>Uma área pessoal para organizar sua experiência digital.</p>
+        <button class="github-button" id="githubButton">
+          <span class="github-mark">GH</span>
+          Entrar com GitHub
+        </button>
+        <small id="loginStatus">Autenticação GitHub será configurada na próxima etapa.</small>
+      </div>
+      <div class="welcome-art" aria-hidden="true">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="art-symbol">L</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">ÁUDIO LOCAL</span>
+          <h2>Meu player</h2>
+        </div>
+        <span class="tag">NO DISPOSITIVO</span>
+      </div>
+
+      <div class="player panel">
+        <div class="track-info">
+          <div class="cover" id="cover">♫</div>
+          <div class="track-text">
+            <strong id="trackName">Nenhuma música selecionada</strong>
+            <span id="trackDetails">Escolha arquivos de áudio do seu celular</span>
+          </div>
+        </div>
+
+        <audio id="audio" preload="metadata"></audio>
+
+        <div class="progress-area">
+          <span id="currentTime">0:00</span>
+          <input id="progress" type="range" min="0" max="100" value="0">
+          <span id="duration">0:00</span>
+        </div>
+
+        <div class="player-controls">
+          <button class="control secondary" id="previous" aria-label="Faixa anterior">|◀</button>
+          <button class="control play" id="play" aria-label="Reproduzir">▶</button>
+          <button class="control secondary" id="next" aria-label="Próxima faixa">▶|</button>
+        </div>
+
+        <div class="volume-row">
+          <span>VOLUME</span>
+          <input id="volume" type="range" min="0" max="1" step="0.05" value="0.8">
+        </div>
+
+        <label class="select-button" for="musicFiles">
+          ＋ Selecionar músicas do dispositivo
+        </label>
+        <input id="musicFiles" type="file" accept="audio/*" multiple hidden>
+
+        <div class="playlist-heading">
+          <strong>Minha playlist</strong>
+          <span id="songCount">0 músicas</span>
+        </div>
+        <ul id="playlist" class="playlist">
+          <li class="empty">Sua lista de músicas aparecerá aqui.</li>
+        </ul>
+        <p class="privacy-note">
+          Seus arquivos são selecionados pelo navegador e reproduzidos localmente.
+          Eles não são enviados para este site.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">CONTEÚDO</span>
+          <h2>Canal do MBL</h2>
+        </div>
+        <span class="tag">YOUTUBE</span>
+      </div>
+      <div class="external-card panel">
+        <div class="external-icon youtube">▶</div>
+        <div class="external-info">
+          <strong>MBL — Movimento Brasil Livre</strong>
+          <span>Acesse o canal no YouTube.</span>
+        </div>
+        <a class="small-link" href="https://www.youtube.com/@mblivre"
+           target="_blank" rel="noopener noreferrer">Abrir canal ↗</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">ACESSO RÁPIDO</span>
+          <h2>Minhas redes</h2>
+        </div>
+      </div>
+      <div class="external-card panel">
+        <div class="external-icon instagram">◎</div>
+        <div class="external-info">
+          <strong>Instagram</strong>
+          <span>Acesse meu perfil.</span>
+        </div>
+        <a class="small-link" href="https://www.instagram.com/lippy_14w/"
+           target="_blank" rel="noopener noreferrer">Visitar perfil ↗</a>
+      </div>
+    </section>
+
+    <section class="section legal">
+      <span class="eyebrow">INFORMAÇÕES</span>
+      <h2>Transparência e uso</h2>
+      <div class="legal-grid">
+        <article class="legal-card">
+          <h3>Termos de uso</h3>
+          <p>Este projeto é uma área de uso pessoal. Utilize-o de forma responsável e respeite os direitos autorais dos conteúdos reproduzidos.</p>
+        </article>
+        <article class="legal-card">
+          <h3>Privacidade</h3>
+          <p>Nesta versão, as músicas escolhidas são processadas localmente pelo navegador. O site não possui cadastro ativo nem coleta de dados por servidor.</p>
+        </article>
+        <article class="legal-card">
+          <h3>Conteúdo externo</h3>
+          <p>Links para YouTube e Instagram direcionam para serviços de terceiros, sujeitos às respectivas políticas.</p>
+        </article>
+      </div>
+      <p class="legal-warning">
+        Esta é uma versão inicial dos avisos. As políticas deverão ser atualizadas
+        quando login, contas ou armazenamento online forem implementados.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">LIPPY WORKSPACE</div>
+    <p>Desenvolvido por: <strong>Lippy</strong></p>
+    <p class="footer-note">Projeto pessoal independente. Não afiliado ao MBL, YouTube ou Instagram.</p>
+    <span>© <span id="year"></span> Lippy Workspace</span>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
