@@ -73,7 +73,10 @@ function loadTrack(index, autoplay = false) {
 
 filesInput.addEventListener("change", event => {
   const selected = Array.from(event.target.files || []);
-  const valid = selected.filter(file => file.type.startsWith("audio/"));
+  const valid = selected.filter(file =>
+    file.type.startsWith("audio/") ||
+    /\.(mp3|m4a|aac|wav|ogg|oga|opus|flac|webm|mp4)$/i.test(file.name)
+  );
 
   if (!valid.length) {
     showToast("Selecione arquivos de áudio compatíveis.");
@@ -85,7 +88,7 @@ filesInput.addEventListener("change", event => {
   });
 
   renderPlaylist();
-  if (currentIndex === -1) loadTrack(0, false);
+  if (currentIndex === -1) loadTrack(0, true);
   showToast(`${valid.length} arquivo(s) adicionado(s) à playlist.`);
   filesInput.value = "";
 });
