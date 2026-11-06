@@ -43,12 +43,6 @@ button, input { font: inherit; }
 h1 { font-size: clamp(29px,6vw,43px); line-height: 1.12; margin: 12px 0; letter-spacing: -1.5px; }
 h1 span { color: #8997ff; }
 .welcome p { color: var(--muted); font-size: 13px; }
-.github-button {
-  border: 0; background: #edf1fa; color: #101827; border-radius: 10px;
-  padding: 11px 16px; font-weight: 750; margin-top: 12px; cursor: pointer;
-}
-.github-mark { font-weight: 900; margin-right: 8px; }
-.welcome small { display: block; color: var(--muted); font-size: 10px; margin-top: 9px; }
 .welcome-art { width: 190px; height: 190px; position: relative; display: grid; place-items: center; flex-shrink: 0; }
 .orb { position: absolute; border: 1px solid #8491ff55; border-radius: 50%; }
 .orb-one { width: 180px; height: 180px; }

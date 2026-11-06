@@ -23,10 +23,6 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove("show"), 3200);
 }
 
-document.getElementById("githubButton").addEventListener("click", () => {
-  showToast("Login GitHub será configurado na próxima etapa, com autenticação segura.");
-});
-
 function formatTime(seconds) {
   if (!Number.isFinite(seconds)) return "0:00";
   const mins = Math.floor(seconds / 60);
