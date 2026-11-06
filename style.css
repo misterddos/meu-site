@@ -366,3 +366,41 @@ body.rgb-neon-active .radio-equalizer i {
   body::before { transition: none; }
   body.rgb-neon-active .radio-equalizer i { animation: none; }
 }
+
+/* LIPPY SCRIPTS - iluminação branca estilo balada */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(255,255,255,.30), transparent 42%),
+    radial-gradient(ellipse at 85% 75%, rgba(255,255,255,.24), transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(255,255,255,.12), transparent 65%);
+}
+
+body.rgb-neon-active::after {
+  animation: lippy-white-party 1.8s ease-in-out infinite;
+}
+
+body.rgb-neon-active .radio-player {
+  border-color: white;
+  box-shadow:
+    0 0 16px rgba(255,255,255,.85),
+    0 0 35px rgba(255,255,255,.45),
+    inset 0 0 18px rgba(255,255,255,.18);
+}
+
+@keyframes lippy-white-party {
+  0%, 100% { opacity: .08; }
+  50% { opacity: .32; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.rgb-neon-active::after {
+    animation: none;
+    opacity: .10;
+  }
+}

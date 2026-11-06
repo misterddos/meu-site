@@ -66,7 +66,7 @@
   }
 
   function stop() {
-    const playing = [audio, video].some(media => !media.paused && !media.ended);
+    const playing = !audio.paused && !audio.ended;
 
     if (!playing) {
       cancelAnimationFrame(frame);
@@ -75,18 +75,16 @@
     }
   }
 
-  [audio, video].forEach(media => {
-    media.addEventListener("play", () => start(media));
-    media.addEventListener("pause", stop);
-    media.addEventListener("ended", stop);
-    media.addEventListener("error", stop);
-  });
+  audio.addEventListener("play", () => start(audio));
+  audio.addEventListener("pause", stop);
+  audio.addEventListener("ended", stop);
+  audio.addEventListener("error", stop);
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       cancelAnimationFrame(frame);
     } else {
-      const playing = [audio, video].find(media => !media.paused && !media.ended);
+      const playing = !audio.paused && !audio.ended ? audio : null;
       if (playing) start(playing);
     }
   });
