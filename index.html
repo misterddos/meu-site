@@ -40,15 +40,30 @@
         <span class="tag">NO DISPOSITIVO</span>
       </div>
 
-      <div class="player panel">
-        <div class="track-info">
-          <div class="cover" id="cover">♫</div>
-          <div class="track-text">
-            <strong id="trackName">Nenhuma música selecionada</strong>
-            <span id="trackDetails">Escolha arquivos de áudio do seu celular</span>
+      <div class="player panel radio-player">
+        <div class="radio-top">
+          <span class="radio-brand">LIPPY AUDIO SYSTEM</span>
+          <span class="radio-status"><i></i> LOCAL PLAYER</span>
+        </div>
+
+        <div class="radio-screen">
+          <div class="radio-screen-top">
+            <span id="mediaType">AUDIO MODE</span>
+            <span>STEREO</span>
+          </div>
+          <div class="track-info">
+            <div class="cover" id="cover">♫</div>
+            <div class="track-text">
+              <strong id="trackName">Nenhum arquivo selecionado</strong>
+              <span id="trackDetails">Selecione áudio ou vídeo do dispositivo</span>
+            </div>
+          </div>
+          <div class="radio-equalizer" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
           </div>
         </div>
 
+        <video id="video" class="local-video" preload="metadata" controls playsinline hidden></video>
         <audio id="audio" preload="metadata"></audio>
 
         <div class="progress-area">
@@ -58,31 +73,34 @@
         </div>
 
         <div class="player-controls">
-          <button class="control secondary" id="previous" aria-label="Faixa anterior">|◀</button>
+          <button class="control secondary" id="previous" aria-label="Arquivo anterior">|◀</button>
           <button class="control play" id="play" aria-label="Reproduzir">▶</button>
-          <button class="control secondary" id="next" aria-label="Próxima faixa">▶|</button>
+          <button class="control secondary" id="next" aria-label="Próximo arquivo">▶|</button>
         </div>
 
         <div class="volume-row">
           <span>VOLUME</span>
           <input id="volume" type="range" min="0" max="1" step="0.05" value="0.8">
+          <span class="radio-volume-label">VOL</span>
         </div>
 
         <label class="select-button" for="musicFiles">
-          ＋ Selecionar músicas do dispositivo
+          ＋ IMPORTAR MÚSICAS E VÍDEOS
         </label>
-        <input id="musicFiles" type="file" accept="audio/*" multiple hidden>
+        <input id="musicFiles" type="file"
+          accept="audio/*,video/*,.mp3,.m4a,.m4b,.aac,.wav,.wave,.ogg,.oga,.opus,.flac,.aif,.aiff,.amr,.3ga,.caf,.wma,.mp4,.m4v,.webm,.ogv,.mov,.mpeg,.mpg,.avi,.mkv,.3gp"
+          multiple hidden>
 
         <div class="playlist-heading">
-          <strong>Minha playlist</strong>
-          <span id="songCount">0 músicas</span>
+          <strong>ARQUIVOS NA PLAYLIST</strong>
+          <span id="songCount">0 arquivos</span>
         </div>
         <ul id="playlist" class="playlist">
-          <li class="empty">Sua lista de músicas aparecerá aqui.</li>
+          <li class="empty">Sua lista aparecerá aqui.</li>
         </ul>
         <p class="privacy-note">
-          Seus arquivos são selecionados pelo navegador e reproduzidos localmente.
-          Eles não são enviados para este site.
+          Reprodução local: seus arquivos não são enviados ao site.
+          A lista é temporária e desaparece ao fechar ou atualizar a página.
         </p>
       </div>
     </section>
