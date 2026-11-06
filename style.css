@@ -1021,3 +1021,23 @@ body.rgb-neon-active .radio-equalizer i {
 .video-extra-controls button:active {
   background: rgba(255, 255, 255, 0.18);
 }
+
+
+/* ===== Protecao basica contra copia casual ===== */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+
+img, video {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: auto;
+}

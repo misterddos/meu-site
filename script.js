@@ -69,6 +69,28 @@ function buildChain(mediaElement) {
 
 
 
+
+// ===== Protecao basica contra copia casual =====
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+  showToast("Acao desabilitada neste site.");
+});
+
+document.addEventListener("keydown", (e) => {
+  const key = e.key.toLowerCase();
+  const blockedCombo =
+    (e.ctrlKey && (key === "s" || key === "u" || key === "p")) ||
+    (e.ctrlKey && e.shiftKey && (key === "i" || key === "j" || key === "c")) ||
+    key === "f12";
+
+  if (blockedCombo) {
+    e.preventDefault();
+    showToast("Acao desabilitada neste site.");
+  }
+});
+
+document.addEventListener("dragstart", (e) => e.preventDefault());
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 audioChain = buildChain(audio);
