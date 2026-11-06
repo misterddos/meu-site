@@ -84,6 +84,43 @@
           <span class="radio-volume-label">VOL</span>
         </div>
 
+        <div class="eq-panel">
+          <div class="eq-heading">
+            <strong>EQUALIZADOR</strong>
+            <label class="eq-toggle">
+              <input id="eqEnabled" type="checkbox" checked>
+              <span>ATIVO</span>
+            </label>
+          </div>
+          <div class="eq-bands">
+            <div class="eq-band">
+              <input id="eq60" type="range" min="-12" max="12" step="1" value="0" orient="vertical">
+              <span>60</span>
+            </div>
+            <div class="eq-band">
+              <input id="eq250" type="range" min="-12" max="12" step="1" value="0" orient="vertical">
+              <span>250</span>
+            </div>
+            <div class="eq-band">
+              <input id="eq1k" type="range" min="-12" max="12" step="1" value="0" orient="vertical">
+              <span>1K</span>
+            </div>
+            <div class="eq-band">
+              <input id="eq4k" type="range" min="-12" max="12" step="1" value="0" orient="vertical">
+              <span>4K</span>
+            </div>
+            <div class="eq-band">
+              <input id="eq12k" type="range" min="-12" max="12" step="1" value="0" orient="vertical">
+              <span>12K</span>
+            </div>
+          </div>
+          <div class="eq-limiter-row">
+            <span>LIMITER</span>
+            <input id="limiterThreshold" type="range" min="-30" max="0" step="1" value="-6">
+            <span id="limiterValue">-6dB</span>
+          </div>
+        </div>
+
         <label class="select-button" for="musicFiles">
           ＋ IMPORTAR MÚSICAS E VÍDEOS
         </label>
