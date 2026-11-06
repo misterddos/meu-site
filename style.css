@@ -314,3 +314,55 @@ footer strong { color: #aab4ff; }
   color: #8d9eac;
   line-height: 1.6;
 }
+
+
+/* RGB NEON MUSIC EFFECT */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(ellipse at 0% 50%, hsla(var(--rgb-hue, 180), 100%, 55%, .20), transparent 48%),
+    radial-gradient(ellipse at 100% 50%, hsla(calc(var(--rgb-hue, 180) + 125), 100%, 55%, .18), transparent 48%),
+    radial-gradient(ellipse at 50% 0%, hsla(calc(var(--rgb-hue, 180) + 220), 100%, 55%, .13), transparent 45%);
+  transition: opacity .2s ease;
+}
+
+body.rgb-neon-active::before {
+  opacity: var(--rgb-power, .5);
+}
+
+body.rgb-neon-active .radio-player {
+  border-color: hsl(var(--rgb-hue, 180), 100%, 65%);
+  box-shadow:
+    0 0 calc(12px + var(--rgb-power, .5) * 28px) hsla(var(--rgb-hue, 180), 100%, 55%, .65),
+    0 0 calc(25px + var(--rgb-power, .5) * 55px) hsla(calc(var(--rgb-hue, 180) + 125), 100%, 55%, .35),
+    inset 0 0 18px hsla(var(--rgb-hue, 180), 100%, 55%, .12);
+}
+
+body.rgb-neon-active .radio-player .cover {
+  box-shadow: 0 0 24px hsla(var(--rgb-hue, 180), 100%, 60%, .75);
+}
+
+body.rgb-neon-active .radio-equalizer i {
+  animation: rgb-equalizer .35s ease-in-out infinite alternate;
+  background: hsl(var(--rgb-hue, 180), 100%, 68%);
+  box-shadow: 0 0 9px currentColor;
+}
+
+.radio-equalizer i:nth-child(2n) { animation-delay: .12s; }
+.radio-equalizer i:nth-child(3n) { animation-delay: .22s; }
+.radio-equalizer i:nth-child(4n) { animation-delay: .08s; }
+
+@keyframes rgb-equalizer {
+  from { transform: scaleY(.35); opacity: .55; }
+  to { transform: scaleY(1.7); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { transition: none; }
+  body.rgb-neon-active .radio-equalizer i { animation: none; }
+}
